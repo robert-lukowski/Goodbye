@@ -1,100 +1,70 @@
-# Farewell Celebration – Goodbye App
+# Goodbye App
 
-A fully interactive farewell web application designed to collect goodbye messages from team members in a visually engaging and elegant way.  
-The app includes animations, parallax effects, custom cursor, interactive particles, background video, music, and Firebase-based message storage with metadata collection.
+Interactive web app for collecting farewell messages from a team.
+It combines animations, multimedia, and Firebase storage to create a memorable farewell message board.
 
-## Overview
+## English
 
-This project creates an immersive farewell experience:
-- an animated login screen with password protection,
-- a dynamic celebration page with animated glitter, parallax layers, confetti, music, and rotating quotes,
-- real-time farewell messages stored in Firebase,
-- optional redirect to a dedicated video page.
+### What this app does
+- Shows a password-protected login screen.
+- Opens a main celebration page with animations and music.
+- Lets users add farewell wishes.
+- Saves and loads wishes in real time using Firebase.
+- Optionally redirects to an additional song/video page.
 
-The application is deployed using GitHub Pages.
+### Features
 
-## Features
+#### Login
+- Animated start screen.
+- Password validation.
+- Shake effect on invalid password.
 
-### 🔐 Password-protected access
-- Custom champagne-themed login screen
-- Smooth slide-in animation
-- Shake animation on incorrect password
+#### Main view
+- Full-screen background video.
+- Parallax and visual effects (glitter, hearts, confetti).
+- Intro/join transition.
+- Background music.
 
-### 🎥 Interactive celebration screen
-- Full-screen looping background video
-- Smooth fade-in intro with a “Join” button
-- Background music (auto-fade on intro skip)
-- Parallax animations
-- Canvas glitter + animated hearts
-- Confetti explosions on events
+#### Farewell board
+- Form with name and message.
+- Live sync with Firebase Realtime Database.
+- Wish counter and date-based ordering.
 
-### 💬 Farewell message board
-- Add name + farewell message
-- Live updates from Firebase (Realtime Database)
-- Automatic sorting by newest message
-- Visitor counter (“X wishes so far”)
+#### Visit metadata
+Depending on availability, stored metadata may include:
+- country and city,
+- IP address,
+- browser and operating system,
+- device type,
+- language.
 
-### 🌍 Visitor metadata tracking
-Each message stores:
-- country
-- city
-- IP (or “not saved” on block)
-- browser + OS
-- device type
-- language
+### File structure
+- `index.html` - login screen,
+- `main.html` - main page after login,
+- `song.html` - optional song/video page,
+- `style.css` - app styling,
+- `firebase.js` - wish persistence and visit logging,
+- `effects.js` - visual effects,
+- `parallax.js` - parallax logic,
+- `chatbotkam.js` - optional chatbot module,
+- media files: `*.mp3`, `*.mp4`, `*.png`.
 
-Additionally, every visit is logged in Firebase via `saveVisit()`.
+### Technologies
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- Firebase Realtime Database
+- `canvas-confetti`
+- `ipapi.co` (geo-IP)
 
-### 🎵 Extra features
-- Farewell song page (`song.html`)
-- Custom mouse cursor (champagne glass)
-- Spark effects on mouse clicks
-- Multiple animations and visual layers
+### Local run
+1. Clone the repository.
+2. Open `index.html` in your browser.
 
-## File Structure
+Note: Firebase and geo/IP features require proper configuration and internet access.
 
-├── index.html # Login page
-├── main.html # Main farewell page
-├── song.html # Additional video page
-├── style.css # Core styling
-├── firebase.js # Firebase logic (saveWish, loadWishes, saveVisit)
-├── effects.js # Glitter + hearts animation
-├── parallax.js # Parallax scrolling logic
-├── chatbotkam.js # Small chatbot logic (optional)
-├── your-music.mp3 # Background music
-├── kolega-song.mp4 # Farewell song video
-├── party.mp4 # Background video
-├── bubbles.png
-├── champagne.png
-├── pearl-paper.png
-├── gold-gradient.png
-
-
-## Technologies Used
-
-- **HTML5**, **CSS3**, **JavaScript**
-- **Firebase Realtime Database**
-- Canvas animations (glitter, sparks, parallax)
-- Custom audio/video handling
-- Confetti library (`canvas-confetti`)
-- Geo-IP lookup via `ipapi.co`
-- GitHub Pages for deployment
-
-## Deployment
-
-1. Push all files to GitHub.
-2. Enable **GitHub Pages** → deploy from `main` branch → `/root`.
-3. App will be live at:
-
-https://<username>.github.io/Goodbye/
-
-
-## Setup
-
-To adapt the project:
-
-### 1. Update Firebase config
-In `firebase.js`, replace the config block with your own:
+### Firebase configuration
+In `firebase.js`, replace the config with your own:
 
 ```js
 const firebaseConfig = {
@@ -106,23 +76,108 @@ const firebaseConfig = {
   messagingSenderId: "...",
   appId: "..."
 };
-2. Change the login password
+```
 
-In index.html:
-const poprawne = "xxxxxx";
-Change to any string.
+### Password configuration
+Set your login password in `index.html` (password variable).
 
-3. Replace media files (optional)
+### Deployment (GitHub Pages)
+1. Push code to GitHub.
+2. Go to **Settings -> Pages**.
+3. Deploy from the `main` branch (root).
 
-party.mp4
+URL format:
 
-your-music.mp3
+`https://<your-username>.github.io/Goodbye/`
 
-kolega-song.mp4
+## Polska wersja
 
-background images (png files)
+### Co robi aplikacja
+- Pokazuje ekran logowania z hasłem.
+- Otwiera stronę główną z animacjami i muzyką.
+- Pozwala dodawać życzenia pożegnalne.
+- Zapisuje i odczytuje wpisy w czasie rzeczywistym przez Firebase.
+- Opcjonalnie przekierowuje do dodatkowej strony z utworem/wideo.
 
-License
+### Funkcje
 
-This project is personal and was built for internal farewell celebration purposes.
-You may adapt it for your own private events.
+#### Logowanie
+- Ekran startowy z animacją.
+- Walidacja hasła.
+- Efekt shake przy błędnym haśle.
+
+#### Widok główny
+- Pełnoekranowe wideo w tle.
+- Parallax i efekty wizualne (glitter, serca, confetti).
+- Przejście intro/join.
+- Muzyka w tle.
+
+#### Tablica życzeń
+- Formularz: imię i wiadomość.
+- Synchronizacja na żywo z Firebase Realtime Database.
+- Licznik wpisów i sortowanie po dacie.
+
+#### Metadane odwiedzin
+W zależności od dostępności mogą być zapisywane:
+- kraj i miasto,
+- adres IP,
+- przeglądarka i system operacyjny,
+- typ urządzenia,
+- język.
+
+### Struktura plików
+- `index.html` - ekran logowania,
+- `main.html` - główna strona po zalogowaniu,
+- `song.html` - opcjonalna strona z utworem/wideo,
+- `style.css` - style aplikacji,
+- `firebase.js` - zapis życzeń i logowanie wizyt,
+- `effects.js` - efekty wizualne,
+- `parallax.js` - logika parallax,
+- `chatbotkam.js` - opcjonalny moduł chatbota,
+- pliki multimedialne: `*.mp3`, `*.mp4`, `*.png`.
+
+### Technologie
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- Firebase Realtime Database
+- `canvas-confetti`
+- `ipapi.co` (geo-IP)
+
+### Uruchomienie lokalne
+1. Sklonuj repozytorium.
+2. Otwórz `index.html` w przeglądarce.
+
+Uwaga: funkcje Firebase oraz geo/IP wymagają poprawnej konfiguracji i dostępu do internetu.
+
+### Konfiguracja Firebase
+W pliku `firebase.js` podmień konfigurację na własną:
+
+```js
+const firebaseConfig = {
+  apiKey: "...",
+  authDomain: "...",
+  databaseURL: "...",
+  projectId: "...",
+  storageBucket: "...",
+  messagingSenderId: "...",
+  appId: "..."
+};
+```
+
+### Konfiguracja hasła
+Ustaw własne hasło logowania w `index.html` (zmienna hasła).
+
+### Deployment (GitHub Pages)
+1. Wypchnij kod na GitHub.
+2. Wejdź w **Settings -> Pages**.
+3. Ustaw deploy z gałęzi `main` (root).
+
+Format adresu:
+
+`https://<twoj-login>.github.io/Goodbye/`
+
+## License
+
+This project was created for a private farewell event.
+You can adapt it for your own non-commercial use.
